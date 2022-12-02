@@ -132,3 +132,7 @@ inputs/*
 build/
 
 .DS_Store
+
+day1
+day2
+day3
