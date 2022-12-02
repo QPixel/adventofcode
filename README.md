@@ -1,5 +1,3 @@
-# AOC 2022
+# AOC 2021
 
-my solutions to the advent of code and my utility packages for solving it easier
-
-check my the branches for previous years
+my solutions to the advent of code 2021

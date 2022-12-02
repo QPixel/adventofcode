@@ -132,3 +132,5 @@ inputs/*
 build/
 
 .DS_Store
+
+*/input.txt
