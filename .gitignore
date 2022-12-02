@@ -1,4 +1,3 @@
-# Logs
 logs
 *.log
 npm-debug.log*
@@ -131,3 +130,5 @@ dist
 
 inputs/*
 build/
+
+.DS_Store
