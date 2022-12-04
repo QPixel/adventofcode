@@ -10,29 +10,28 @@ async function day4(): Promise<void> {
             return range;
         })
     })
-    const pairs = [];
+    const part1 = []
+    const part2 = [];
     for (let i in filled) {
         const [first, second] = filled[i];
         if (first[0] <= second[0] && first[first.length - 1] >= second[second.length - 1]) {
-            console.log("first fully overlaps", filled.indexOf(filled[i]));
-            pairs.push(1);
+            part1.push(1)
+            part2.push(1);
         } else if (second[0] <= first[0] && second[second.length - 1] >= first[first.length - 1]) {
-            console.log("second fully overlaps", filled.indexOf(filled[i]));
-            pairs.push(1)
+            part1.push(1)
+            part2.push(1)
         } else {
-            // check to see if first and second partially overlap each other
             if (first[0] <= second[0] && first[first.length - 1] >= second[0]) {
-                console.log("first partially overlaps", filled.indexOf(filled[i]));
-                pairs.push(1);
+                part2.push(1);
             }
             if (second[0] <= first[0] && second[second.length - 1] >= first[0]) {
-                console.log("second partially overlaps", filled.indexOf(filled[i]));
-                pairs.push(1);
+                part2.push(1);
             }
-            pairs.push(0)
+            part1.push(0)
+            part2.push(0)
         }
     }
-    console.log(pairs.reduce((a, b) => a + b));
+    console.log(part1.reduce((a,b) => a+b), part2.reduce((a, b) => a + b));
 }
 
 await day4()
