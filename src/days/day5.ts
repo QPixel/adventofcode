@@ -23,8 +23,7 @@ async function day5(): Promise<void> {
         }
         return true;
     })).map((x) => x.map((x) => Number(x)));
-    for (let move in moves) {
-        const [amount, from, to] = moves[move];
+    for (let [amount, from, to] of moves) {
         const fromCol = columns[from - 1];
         const toCol = columns[to - 1];
         const moved = fromCol.splice(0, amount)

@@ -4,7 +4,9 @@
   "description": "my advent of code stuff",
   "main": "",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "watch": "tsc -w",
+    "start": "node build/days/"
   },
   "keywords": [],
   "author": "",
