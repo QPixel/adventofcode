@@ -29,7 +29,7 @@ async function day5(): Promise<void> {
         const moved = fromCol.splice(0, amount)
         toCol.unshift(...moved);
         // uncomment for part 2
-        // const moved = fromCol.slice(0, amount).reverse()
+        // const moved = fromCol.splice(0, amount).reverse()
     }
     const joined = columns.map((x) => x[0]).join("");
     console.log(joined.replace(/(\[)|(\])/g, ""));
