@@ -1,21 +1,23 @@
 import { readFile } from "../utils/index.js";
-import { writeFileSync } from "node:fs";
+
+type tree = {
+    type: string,
+    children: Array<{
+        name: string,
+        type: "dir" | "file",
+        size: number
+    }>,
+    parent: string,
+    size: number
+}
 
 export async function day7(): Promise<void> {
     const input = await readFile("day7.txt");
     const split = input.split("\n");
     let currentCommand = "";
     const path: string[] = [];
-    const tree: Record<string, {
-        type: string,
-        children: Array<{
-            name: string,
-            type: "dir" | "file",
-            size: number
-        }>,
-        parent: string,
-        size: number
-    }> = {}
+    const tree: Record<string, tree> = {};
+    // todo clean up
     for (let i in split) {
         switch (split[i].slice(0, 1)) {
             case "$":
@@ -37,20 +39,10 @@ export async function day7(): Promise<void> {
                 }
                 break;
             default:
-                if (currentCommand === "cd") {
-
-                } else if (currentCommand === "ls") {
+                if (currentCommand === "ls") {
                     const cmd = split[i].split(" ");
                     switch (cmd[0]) {
                         case "dir":
-                            if (tree[`/${path.join("/")}`] === undefined) {
-                                tree[`/${path.join("/")}`] = {
-                                    type: "dir",
-                                    children: [],
-                                    parent: `/${path.slice(0, -1).join("/")}`,
-                                    size: 0
-                                }
-                            }
                             if (tree[`/${path.join("/")}`] === undefined) {
                                 tree[`/${path.join("/")}`] = {
                                     type: "dir",
@@ -116,7 +108,6 @@ export async function day7(): Promise<void> {
     }
     candidates.sort((a, b) => b - a).reverse();
     console.log("Most likely candidate", candidates[0])
-
 }
 
 
