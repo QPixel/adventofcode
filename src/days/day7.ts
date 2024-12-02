@@ -1,3 +1,4 @@
+import { writeFile } from "node:fs/promises";
 import { readFile } from "../utils/index.js";
 
 type tree = {
@@ -108,6 +109,7 @@ export async function day7(): Promise<void> {
     }
     candidates.sort((a, b) => b - a).reverse();
     console.log("Most likely candidate", candidates[0])
+    await writeFile("day7-output.json", JSON.stringify(tree, null, 2));
 }
 
 
